@@ -13,19 +13,19 @@ const Footer = () => {
                   <li><a href="#" className="text-gray-600 hover:text-[#DE492A]">Origin</a></li>
                   <li><a href="#" className="text-gray-600 hover:text-[#DE492A]">Core</a></li>
                   <li><a href="#" className="text-gray-600 hover:text-[#DE492A]">Collect</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-gray-900">Store</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-gray-900">Check</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-gray-900">Legal</a></li>
+                  <li><a href="#" className="text-gray-600 hover:text-[#DE492A]">Store</a></li>
+                  <li><a href="#" className="text-gray-600 hover:text-[#DE492A]">Check</a></li>
+                  <li><a href="#" className="text-gray-600 hover:text-[#DE492A]">Legal</a></li>
                 </ul>
               </div>
 
               <div>
                 <h3 className="text-gray-900 font-semibold mb-6">Sobre Nosotros</h3>
                 <ul className="space-y-4">
-                  <li><a href="#" className="text-gray-600 hover:text-gray-900">Nuestra Historia</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-gray-900">Nuestros Expertos</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-gray-900">Testimoniales</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-gray-900">Implementaciones</a></li>
+                  <li><a href="#" className="text-gray-600 hover:text-[#DE492A]">Nuestra Historia</a></li>
+                  <li><a href="#" className="text-gray-600 hover:text-[#DE492A]">Nuestros Expertos</a></li>
+                  <li><a href="#" className="text-gray-600 hover:text-[#DE492A]">Testimoniales</a></li>
+                  <li><a href="#" className="text-gray-600 hover:text-[#DE492A]">Implementaciones</a></li>
                 </ul>
               </div>
 
