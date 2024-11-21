@@ -21,7 +21,7 @@ const Hero = () => {
       </div>
 
       <div className="mt-12 sm:mt-16 md:mt-20 lg:mt-32 w-full relative z-10">
-        <video
+        {/* <video
           autoPlay
           muted
           loop
@@ -32,7 +32,13 @@ const Hero = () => {
           <source src="./assets/heroVideo.webm" type="video/webm" />
           <source src="./assets/heroVideo.mp4" type="video/mp4" />
           Su navegador no soporta videos HTML5.
-        </video>
+        </video> */}
+        <img
+          src="./assets/hero-img.avif"
+          alt="Professional People"
+          className="w-[90%] max-w-[1400px] mx-auto rounded-md shadow-md "
+        />
+
       </div>
     </div>
   );
