@@ -33,12 +33,15 @@ const Hero = () => {
           <source src="./assets/heroVideo.mp4" type="video/mp4" />
           Su navegador no soporta videos HTML5.
         </video> */}
-        <img
-          src="./assets/hero-img.avif"
-          alt="Professional People"
-          className="w-[90%] max-w-[1400px] mx-auto rounded-md shadow-md "
-        />
-
+        <picture>
+          <source srcSet="./assets/hero-img.png" type="image/png" />
+          <img
+            src="./assets/hero-img.avif"
+            type="image/avif"
+            alt="Professional People"
+            className="w-[90%] max-w-[1400px] mx-auto rounded-md shadow-md"
+          />
+        </picture>
       </div>
     </div>
   );

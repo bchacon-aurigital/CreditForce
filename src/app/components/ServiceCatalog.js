@@ -3,42 +3,60 @@ import React, { useEffect, useRef, useState } from "react";
 const services = [
   {
     id: "origin",
-    titleImage: "/assets/ORIGIN.avif",
+    titleImage: {
+      avif: "/assets/ORIGIN.avif",
+      png: "/assets/ORIGIN.png",
+    },
     description:
       "Origin es el sistema que le permite automatizar el flujo de solicitudes, las reglas y los árboles de decisión para la originación de créditos desde cualquier punto de venta o plataforma en línea, según el nivel de riesgo deseado.",
     pdfFile: "/Docs/Origin.pdf",
   },
   {
     id: "core",
-    titleImage: "/assets/CORE.avif",
+    titleImage: {
+      avif: "/assets/CORE.avif",
+      png: "/assets/CORE.png",
+    },
     description:
       "Core es el sistema que le permite administrar todo su cartera de crédito, de forma ágil y precisa, incluyendo la gestión de créditos según sus características específicas.",
     pdfFile: "/Docs/Core.pdf",
   },
   {
     id: "store",
-    titleImage: "/assets/STORE.avif",
+    titleImage: {
+      avif: "/assets/STORE.avif",
+      png: "/assets/STORE.png",
+    },
     description:
       "Store es el sistema que le permite habilitar nuevos puntos de originación de crédito desde su plataforma de comercio, permitiéndole a sus consumidores realizar compras al instante o a través de diversos planes de financiamiento.",
     pdfFile: "/Docs/Store.pdf",
   },
   {
     id: "collect",
-    titleImage: "/assets/COLLECT.avif",
+    titleImage: {
+      avif: "/assets/COLLECT.avif",
+      png: "/assets/COLLECT.png",
+    },
     description:
       "Collect es el sistema de gestión de cobranza que le permite fortificar la cartera, optimizar la rentabilidad, mejorar la productividad y asegurar la recuperación de créditos de manera eficiente y oportuna.",
     pdfFile: "/Docs/Collect.pdf",
   },
   {
     id: "check",
-    titleImage: "/assets/CHECK.avif",
+    titleImage: {
+      avif: "/assets/CHECK.avif",
+      png: "/assets/CHECK.png",
+    },
     description:
       "Check es el sistema que le permite automatizar y agilizar el proceso de evaluación y validación de personas, garantizando que su organización tome decisiones informadas y confiables sobre a quién otorgarle un crédito.",
     pdfFile: "/Docs/Check.pdf",
   },
   {
     id: "legal",
-    titleImage: "/assets/LEGAL.avif",
+    titleImage: {
+      avif: "/assets/LEGAL.avif",
+      png: "/assets/LEGAL.png",
+    },
     description:
       "Legal es el sistema que le facilita la gestión del ciclo de vida legal de su cartera financiera en mora, permitiéndole evaluar diversos tipos de demandas, administrar la preparación y presentación de la cartera así como el seguimiento de las etapas judiciales del caso.",
     pdfFile: "/Docs/Legal.pdf",
@@ -49,26 +67,12 @@ const ServiceCatalog = () => {
   const [visibleItems, setVisibleItems] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
   const itemsRefs = useRef([]);
-  const [mobilePdfSrcs, setMobilePdfSrcs] = useState({});
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    const updatedMobilePdfSrcs = {};
-    services.forEach((service) => {
-      const url = `https://drive.google.com/viewerng/viewer?embedded=true&url=${encodeURIComponent(
-        window.location.origin + service.pdfFile
-      )}`;
-      updatedMobilePdfSrcs[service.id] = url;
-    });
-    setMobilePdfSrcs(updatedMobilePdfSrcs);
   }, []);
 
   useEffect(() => {
@@ -97,6 +101,11 @@ const ServiceCatalog = () => {
     };
   }, [isMobile]);
 
+  const handlePdfClick = (pdfPath) => (e) => {
+    e.preventDefault();
+    window.open(window.location.origin + pdfPath, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div className="bg-gradient-to-b from-[#E7E9EA] to-transparent w-full mt-10">
       <div className="pt-10 lg:p-8 max-w-7xl mx-auto text-center">
@@ -119,11 +128,17 @@ const ServiceCatalog = () => {
               >
                 <div className="p-8 flex flex-col items-center h-full py-16">
                   <div className="h-12 text-center">
-                    <img
-                      src={service.titleImage}
-                      alt={`${service.id} logo`}
-                      className="h-full object-contain"
-                    />
+                    <picture>
+                      <source
+                        srcSet={service.titleImage.png}
+                        type="image/png"
+                      />
+                      <img
+                        src={service.titleImage.avif}
+                        alt={`${service.id} logo`}
+                        className="h-full object-contain"
+                      />
+                    </picture>
                   </div>
                   <div className="flex justify-center items-center flex-grow">
                     <p className="text-gray-600 text-sm leading-relaxed px-3 mt-2 text-justify">
@@ -131,25 +146,12 @@ const ServiceCatalog = () => {
                     </p>
                   </div>
                   <div className="absolute bottom-8 left-0 right-0 text-center">
-                    {isMobile ? (
-                      <a
-                        href={mobilePdfSrcs[service.id]}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#DE492A] hover:text-[#a43617] text-sm cursor-pointer"
-                      >
-                        Saber más {">>>"}
-                      </a>
-                    ) : (
-                      <a
-                        href={service.pdfFile}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#DE492A] hover:text-[#a43617] text-sm cursor-pointer"
-                      >
-                        Saber más {">>>"}
-                      </a>
-                    )}
+                    <button
+                      onClick={handlePdfClick(service.pdfFile)}
+                      className="text-[#DE492A] hover:text-[#a43617] text-sm cursor-pointer"
+                    >
+                      Saber más {">>>"}
+                    </button>
                   </div>
                 </div>
               </div>

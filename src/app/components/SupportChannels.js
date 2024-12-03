@@ -62,12 +62,12 @@ const SupportChannels = () => {
     {
       icon: <WebIcon />,
       title: "Soporte a través de la web",
-      href: "https://creditforce.myservicetonic.com/ServiceTonic/login.jsf", 
+      href: "https://creditforce.myservicetonic.com/ServiceTonic/login.jsf",
     },
     {
       icon: <PhoneIcon />,
       title: "Soporte a través del teléfono",
-      href: "http://wa.link/th6rbo", 
+      href: "http://wa.link/th6rbo",
     },
     {
       icon: <MailIcon />,
@@ -90,8 +90,8 @@ const SupportChannels = () => {
               <a
                 key={index}
                 href={channel.href}
-                target="_blank" 
-                rel="noopener noreferrer" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full p-6 flex items-center gap-6 bg-gray-50 hover:bg-[#DE492A80] group transition-colors duration-500 rounded-2xl shadow-md lg:min-h-[150px]"
               >
                 <div className="flex justify-center items-center h-full min-w-[64px] text-[#DE492A] group-hover:text-white transition-colors duration-500">
@@ -108,11 +108,15 @@ const SupportChannels = () => {
 
           <div className="relative w-full">
             <div className="bg-gray-100 rounded-lg h-full">
-              <img
-                src="/assets/ChannelImg.avif"
-                alt="Credit Force Laptop"
-                className="w-full h-full object-cover rounded-lg"
-              />
+              <picture>
+                <source srcSet="/assets/ChannelImg.png" type="image/png" />
+                <img
+                  src="/assets/ChannelImg.avif"
+                  type="image/avif" 
+                  alt="Credit Force Laptop"
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </picture>
             </div>
           </div>
         </div>
@@ -123,7 +127,8 @@ const SupportChannels = () => {
             download="GuiaDeSoporte.pdf"
             className="px-8 py-4 text-lg text-center bg-transparent border-2 border-[#DE492A] text-[#DE492A] rounded-lg hover:bg-[#DE492A] hover:text-white transition-colors duration-500 text-xl font-[800]"
           >
-            Descargue la Guía de<br />
+            Descargue la Guía de
+            <br />
             Soporte
           </a>
         </div>
